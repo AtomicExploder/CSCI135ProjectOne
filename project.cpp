@@ -53,7 +53,7 @@ int main()
 		}
 	}
 	
-
+	studentdata.close();
 	studentdataplus.close();
 	huntercourses.close();
 	ifstream studentdataplus2;
