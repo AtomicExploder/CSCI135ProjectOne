@@ -1,0 +1,414 @@
+	while(studentdata >> number1 >> number2 >> number3 >> number4 >> number5 >> number6)
+	{
+        while(huntercourses >> num1 >> num2 >> num3 >> num4)
+        {
+			new2file << num1 << "	" << num2 << "	" << num3 << "	" << num4 << endl;
+        }
+        studentdataplus << number1<< " 	"  << number2<< " 	" <<number3<< " 	" <<number4<< " 		" <<number5<< " 	" << number6 <<endl;
+	}
+}
+
+int main(){
+
+	ifstream studentdata;
+	studentdata.open ("StudentData.tsv");
+	ofstream studentdataplus;
+	studentdataplus.open("StudentDataPlus.txt");
+		
+		
+	string number1, number2, number3, number5,number4, number6;
+		
+	while(studentdata>>number1>>number2>>number3>>number4>>number5>>number6){
+        	
+			
+		studentdataplus << number1<< " 	"  << number2<< " 	" <<number3<< " 	" <<number4<< " 		" <<number5<< " 	" << number6 <<endl;
+			
+	}
+		
+	studentdata.close();
+	studentdataplus.close();
+}
+		
+	while(studentdata >> number1 >> number2 >> number3 >> number4 >> number5 >> number6)
+	{
+        while(huntercourses >> num1 >> num2 >> num3 >> num4)
+        {
+        	
+			if(number4 == num2)
+			{
+				studentdataplus << number1 << "	" << number2 << "	" << number3 << "	" << number4 << "	" << number5 << "	" << number6 << "	" << num3 << "	" << num4 << "	" << endl;
+			}
+        }
+	}
+	
+for(string number1, number2, number3, number4,number5, number6; studentdata >> number1 >> number2 >> number3 >> number4 >> number5 >> number6; studentdataplus << endl )
+
+
+    while(huntercourses >> num1 >> num2 >> num3 >> num4)
+	{
+		while(studentdata >> number1 >> number2 >> number3 >> number4 >> number5 >> number6)
+        {
+			if(num2 == number4)
+			{
+				studentdataplus << number1 << "	" << number2 << "	" << number3 << "	" << number4 << "	" << number5 << "	" << number6 << "	" << num3 << "	" << num4 << "	" << endl;
+			}
+			else
+			{
+				studentdataplus << number1 << "	" << number2 << "	" << number3 << "	" << number4 << "	" << number5 << "	" << number6 << "	" << "3.0" << "	" << "RNL" << "	" << endl;
+			}
+        }
+	}
+	
+250
+3.0
+
+	while(huntercourses >> num1 >> num2 >> num3 >> num4 && studentdata >> number1 >> number2 >> number3 >> number4 >> number5 >> number6)
+	{
+			while(num2 != number4 && number3 != num1)
+			{
+				huntercourses >> num1 >> num2 >> num3 >> num4;
+				studentdataplus << number1 << "	" << number2 << "	" << number3 << "	" << number4 << "	" << number5 << "	" << number6 << "	" << num3 << "	" << num4 << "	" << '\n';
+			}
+	}
+	return 0;
+}
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+	ifstream studentdata;
+	studentdata.open ("StudentData.tsv");
+		
+	ifstream hunterC;
+	hunterC.open("HunterCourses.tsv");
+		
+	ofstream studentdataplus;
+	studentdataplus.open("StudentDataPlus.tsv");
+		
+	string hc1,hc2,hc3,hc4;
+	string sd1, sd2, sd3, sd4, sd5;
+	double sd6;
+	bool hdcAdded;
+
+	//Loop through SD
+	while(studentdata>>sd1>>sd2>>sd3>>sd4>>sd5>>sd6)
+	{
+		//add SD line to SDP
+		studentdataplus << sd1 << "	" << sd2 << "	" << sd3 << "	" << sd4 << "	" << sd5 << "	" << sd6;
+
+		//find the hours/designation code
+		hdcAdded = 0; 
+		//set to false each time to ensure we find hours/designation code for each student
+		while(hunterC>>hc1>>hc2>>hc3>>hc4)
+		{	
+			if(sd3 == hc1 && sd4 == hc2) 
+			{
+				//found a match in HC, add it to SDP 
+				studentdataplus << "	" << hc3 << "	" <<  hc4 << endl;
+				hdcAdded = 1;
+				hunterC.close();
+				hunterC.open("HunterCourses.tsv");
+				break;//once we find a match, break out of this loop
+			}
+
+		}
+
+		//check if hours/designation code has been added for this line
+		if(hdcAdded == 0)
+		{
+			//nothing added yet, add default 3.0	RNL
+			studentdataplus << "	" << "3.0" << "	" << "RNL" << endl;
+			hunterC.close();
+			hunterC.open("HunterCourses.tsv");
+		}
+	}
+		
+	hunterC.close();
+	studentdata.close();
+	studentdataplus.close();
+	return 0;
+}
+
+
+	int increment=0;
+	string p;
+	studentdata>>sd1>>sd2>>sd3>>sd4>>sd5>>sd6;
+	p = sd1;
+	while(studentdata>>sd1>>sd2>>sd3>>sd4>>sd5>>sd6)
+	{
+		sd1 = sd1;
+		cout << p <<"	" << sd1 << endl;
+		if(sd1 == p)
+		{
+			increment++;
+			studentsummary << sd1 << "	" << increment << endl;
+			sd1 = sd1;
+		}
+		if(sd1 != p)
+		{
+			increment = 0;
+			increment++;
+			studentsummary << sd1 << "	" << increment << endl;	
+			sd1 = sd1;
+		}
+		p = sd1;
+	}
+
+                            ||||
+working code down there guy vvvv
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+	ifstream studentdata;
+	studentdata.open ("StudentData.tsv");
+	ifstream hunterC;
+	hunterC.open("HunterCourses.tsv");
+	ofstream studentdataplus;
+	studentdataplus.open("StudentDataPlus.tsv");
+	ofstream studentsummary;
+	studentsummary.open("StudentSummary.tsv");
+		
+	string hc1,hc2,hc3,hc4;
+	string sd1, sd2, sd3, sd4, sd5;
+	double sd6;
+	bool hdcAdded;
+
+
+	//Loop through SD
+	while(studentdata>>sd1>>sd2>>sd3>>sd4>>sd5>>sd6)
+	{
+		//add SD line to SDP
+		studentdataplus << sd1 << "	" << sd2 << "	" << sd3 << "	" << sd4 << "	" << sd5 << "	" << sd6;
+
+		//find the hours/designation code
+		hdcAdded = 0; 
+		//set to false each time to ensure we find hours/designation code for each student
+		while(hunterC>>hc1>>hc2>>hc3>>hc4)
+		{	
+			if(sd3 == hc1 && sd4 == hc2) 
+			{
+				//found a match in HC, add it to SDP 
+				studentdataplus << "	" << hc3 << "	" <<  hc4 << endl;
+				hdcAdded = 1;
+				hunterC.close();
+				hunterC.open("HunterCourses.tsv");
+				break;//once we find a match, break out of this loop
+			}
+
+		}
+
+		//check if hours/designation code has been added for this line
+		if(hdcAdded == 0)
+		{
+			//nothing added yet, add default 3.0	RNL
+			studentdataplus << "	" << "3.0" << "	" << "RNL" << endl;
+			hunterC.close();
+			hunterC.open("HunterCourses.tsv");
+		}
+	}
+	
+	hunterC.close();
+	studentdata.close();
+	studentdataplus.close();
+
+	hunterC.open("HunterCourses.tsv");
+	studentdata.open("StudentData.tsv");
+
+	int increment=0, x=0;
+	double sum = 0;
+	string p;
+	studentdata>>sd1>>sd2>>sd3>>sd4>>sd5>>sd6;
+	p = sd1;
+	sd1 = sd1;
+	sum = sum + sd6;
+	x++;
+	increment ++;
+	studentsummary << sd1 << "	";
+	while(studentdata>>sd1>>sd2>>sd3>>sd4>>sd5>>sd6)
+	{
+		if(sd1 == p)
+		{
+			increment++;
+			sd1 = sd1;
+			while(x < increment)
+			{
+				if(sd6 == -1)
+				{
+					sd6 = 0;
+					x--;
+					increment --;
+					break;
+				}
+				sum= sum + sd6;
+				x++;
+			}
+		}
+		if(sd1 != p)
+		{
+			studentsummary << increment << "	"<< sum/increment << endl;
+			studentsummary << sd1 << "	";
+			sum =0;
+			x=0;
+			increment = 0;
+			increment++;
+		}
+		p = sd1;
+	}
+	studentsummary << increment << "	"<< sum/increment << endl;
+
+
+
+
+	
+#include <iostream>
+#include<cstring>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+	ifstream studentdata;
+	studentdata.open ("StudentData.tsv");
+	ifstream huntercourses;
+	huntercourses.open("HunterCourses.tsv");
+	ofstream studentdataplus;
+	studentdataplus.open("StudentDataPlus.tsv");
+	ofstream studentsummary;
+	studentsummary.open("StudentSummary.tsv");
+		
+	string subject,catalog_number,contact_hours,designation_code;
+	string empl_id, semester, subject_code, catalog_code, letter_grade, sd7, sd8;
+	double numeric_grade, s6;
+	bool hours_desginationcode_finder;
+
+
+	//Loop through SD
+	while(studentdata>>empl_id>>semester>>subject_code>>catalog_code>>letter_grade>>numeric_grade)
+	{
+		//add SD line to SDP
+		studentdataplus << empl_id << "	" << semester << "	" << subject_code << "	" << catalog_code << "	" << letter_grade << "	" << numeric_grade;
+
+		//find the hours/designation code
+		hours_desginationcode_finder = 0; 
+		//set to false each time to ensure we find hours/designation code for each student
+		while(huntercourses>>subject>>catalog_number>>contact_hours>>designation_code)
+		{	
+			if(subject_code == subject && catalog_code == catalog_number) 
+			{
+				//found a match in HC, add it to SDP 
+				studentdataplus << "	" << contact_hours << "	" <<  designation_code << endl;
+				hours_desginationcode_finder = 1;
+				huntercourses.close();
+				huntercourses.open("HunterCourses.tsv");
+				break;
+				//once we find a match, break out of this loop
+			}
+
+		}
+
+		//check if hours/designation code has been added for this line
+		if(hours_desginationcode_finder == 0)
+		{
+			//nothing added yet, add default 3.0	RNL
+			studentdataplus << "	" << "3.0" << "	" << "RNL" << endl;
+			huntercourses.close();
+			huntercourses.open("HunterCourses.tsv");
+		}
+	}
+	
+
+	studentdataplus.close();
+	ifstream studentdataplus2;
+	studentdataplus2.open("StudentDataPlus.tsv");
+
+	int increment=0, x=0;
+	int increment2 =1;
+	double sum2=0;
+	double sum = 0;
+	string p;
+	studentdataplus2>>empl_id>>semester>>subject_code>>catalog_code>>letter_grade>>numeric_grade>>sd7>>sd8;
+	p = empl_id;
+	empl_id = empl_id;
+	sum = sum + numeric_grade;
+	sum2 = sum2+numeric_grade;
+	x++;
+	increment ++;
+	studentsummary << empl_id << "	";
+	while(studentdataplus2>>empl_id>>semester>>subject_code>>catalog_code>>letter_grade>>numeric_grade>>sd7>>sd8)
+	{
+		if(empl_id == p)
+		{
+			s6 = numeric_grade;
+			increment++;
+			empl_id = empl_id;
+			//segment is csci
+			s6 = numeric_grade;
+			if(subject_code == "CSCI")
+			{
+					if (numeric_grade == -1)
+					{
+						s6 = 0;
+						increment2 --;   
+					}	
+				sum2 = sum2 + s6;
+				increment2++;
+			}
+			//segment is csci
+			if(sd8 == "RNL" || sd8 == "MNL" || sd8 == "GNL")
+			{
+				
+			}
+			while(x < increment)
+			{
+				if(numeric_grade == -1)
+				{
+					numeric_grade = 0;
+					x--;
+					increment --;
+					break;
+				}
+				sum= sum + numeric_grade;
+				x++;
+			}
+		}
+		else
+		{
+			studentsummary << "	"<< sum/increment <<"	"  << "	"<< sum2/increment2 << endl;
+			studentsummary << empl_id << "	";
+			sum =0;
+			x=0;
+			increment = 0;
+			increment++;
+			sum2 =0;
+			increment2 = -1;
+			increment2++;
+		}
+		p = empl_id;
+		cout << sum2 << " "<< endl;
+	}
+	studentsummary <<  "	" << sum/increment << "	"  <<  "	"<< sum2/increment2 << endl;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	return 0;
+}
